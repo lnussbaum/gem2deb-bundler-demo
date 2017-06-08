@@ -1,0 +1,26 @@
+Source: ruby-gem2deb-bundler-demo
+Section: ruby
+Priority: optional
+Maintainer: Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>
+Uploaders: Lucas Nussbaum <lucas@debian.org>
+Build-Depends: debhelper (>= 9~),
+               gem2deb,
+               ruby-colorize (>= 0.7.3),
+               ruby-ffi (>= 1.9.6)
+Standards-Version: 3.9.8
+Vcs-Git: https://anonscm.debian.org/git/pkg-ruby-extras/ruby-gem2deb-bundler-demo.git
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-ruby-extras/ruby-gem2deb-bundler-demo.git
+Homepage: https://github.com/lnussbaum/gem2deb-bundler-demo
+Testsuite: autopkgtest-pkg-ruby
+XS-Ruby-Versions: all
+
+Package: ruby-gem2deb-bundler-demo
+Architecture: all
+XB-Ruby-Versions: ${ruby:Versions}
+Depends: ruby | ruby-interpreter,
+         ruby-colorize (>= 0.7.3),
+         ruby-ffi (>= 1.9.6),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: Very basic demo of using gem2deb with bundler
+ Very basic demo of using gem2deb with bundler

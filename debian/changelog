@@ -1,0 +1,5 @@
+ruby-gem2deb-bundler-demo (0.1-1) UNRELEASED; urgency=medium
+
+  * Initial release (Closes: #nnnn)
+
+ -- Lucas Nussbaum <lucas@debian.org>  Thu, 08 Jun 2017 23:41:01 +0200
