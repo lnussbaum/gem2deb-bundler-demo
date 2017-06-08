@@ -19,7 +19,7 @@ Testsuite: autopkgtest-pkg-ruby
 XS-Ruby-Versions: all
 
 Package: ruby-gem2deb-bundler-demo
-Architecture: all
+Architecture: any
 XB-Ruby-Versions: ${ruby:Versions}
 Depends: ruby | ruby-interpreter,
          ${misc:Depends},
