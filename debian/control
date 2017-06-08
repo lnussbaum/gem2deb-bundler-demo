@@ -18,8 +18,6 @@ Package: ruby-gem2deb-bundler-demo
 Architecture: all
 XB-Ruby-Versions: ${ruby:Versions}
 Depends: ruby | ruby-interpreter,
-         ruby-colorize (>= 0.7.3),
-         ruby-ffi (>= 1.9.6),
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Very basic demo of using gem2deb with bundler
