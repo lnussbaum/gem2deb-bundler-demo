@@ -18,3 +18,7 @@ override_dh_auto_install:
 	dh_installdirs ${BUNDLEDIR}
 	dh_install bundle/* ${BUNDLEDIR}
 	dh_auto_install
+
+override_dh_auto_clean:
+	rm -rf bundle
+	dh_auto_clean
