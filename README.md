@@ -1,39 +1,57 @@
-# Gem2deb::Bundler::Demo
+# Gem2deb-Bundler-Demo
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/gem2deb/bundler/demo`. To experiment with that code, run `bin/console` for an interactive prompt.
+This demo gem shows how to build a Debian package (using `gem2deb`) that
+includes its dependencies in a bundle managed by `bundler`, to avoid relying on
+external distribution packages.
+The whole process is documented as a sequence of git commits.
 
-TODO: Delete this and the text above, and describe your gem
+The major bits are:
+  * in debian/rules:
+    + the call to `bundler install --standalone`
+    + the installation of the bundle dir in the filesystem
+  * in exe/gem2deb-bundler-demo:
+    + the addition of the bundle location to $LOAD_PATH
 
-## Installation
+## Building a Debian package (with its bundle) from this repository
 
-Add this line to your application's Gemfile:
+Make sure you have the required dependencies to build Debian packages:
 
-```ruby
-gem 'gem2deb-bundler-demo'
-```
+    $ sudo apt-get install -y --no-install-recommends build-essential devscripts
 
-And then execute:
+And the build-dependencies for this package:
 
-    $ bundle
+    $ sudo apt-get install -y gem2deb bundler
 
-Or install it yourself as:
+Note that if you are using Debian 8 Jessie, you need the version of gem2deb
+from jessie-backports.
 
-    $ gem install gem2deb-bundler-demo
+Then, you can try to build the package:
 
-## Usage
+    $ dpkg-buildpackage
 
-TODO: Write usage instructions here
+If this fails, you might need to install additional build-dependencies:
 
-## Development
+    $ apt-get install -y git ruby-dev ruby-colorize ruby-ffi
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Or:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+    $ mk-build-deps -i
 
-## Contributing
+When it will have built successfully, you can check the content of the package with:
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/gem2deb-bundler-demo.
+    $ debc
 
+Enjoy!
+
+## Limitations
+
+Given that the Ruby interpreter version is hardcoded in the paths of the
+bundle, you need to build the Debian package on the same version of the
+distribution as the target system.
+
+## Author
+
+Lucas Nussbaum <lucas@debian.org>
 
 ## License
 
