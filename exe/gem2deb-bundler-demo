@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+$:.unshift "/usr/lib/ruby/bundles/ruby-gem2deb-bundler-demo"
+
 require 'bundler/setup'
 require "gem2deb-bundler-demo"
 
