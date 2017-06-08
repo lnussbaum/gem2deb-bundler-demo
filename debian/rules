@@ -4,3 +4,17 @@ export GEM2DEB_TEST_RUNNER = --check-dependencies
 
 %:
 	dh $@ --buildsystem=ruby --with ruby
+
+# Run 'bundle install --standalone' at the beginning of the Debian build process
+override_dh_auto_build:
+	bundle install --standalone
+	dh_auto_build
+
+BUNDLEDIR=usr/lib/ruby/bundles/ruby-gem2deb-bundler-demo
+
+# Install the content of the bundle directory to BUNDLEDIR before doing the rest
+# of the installation process
+override_dh_auto_install:
+	dh_installdirs ${BUNDLEDIR}
+	dh_install bundle/* ${BUNDLEDIR}
+	dh_auto_install
